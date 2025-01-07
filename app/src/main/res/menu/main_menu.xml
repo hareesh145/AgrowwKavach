@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/my_profile"
+        android:icon="@drawable/ic_my_profile"
+        android:title="My Profile" />
+
+    <item
+        android:id="@+id/my_order"
+        android:icon="@drawable/ic_my_order"
+        android:title="My Order" />
+
+
+    <item
+        android:id="@+id/my_list"
+        android:icon="@drawable/ic_my_list"
+        android:title="My List" />
+
+
+    <item
+        android:id="@+id/shipping_address"
+        android:icon="@drawable/ic_shipping_address"
+        android:title="Shipping Address" />
+
+    <item
+        android:id="@+id/cc_address"
+        android:icon="@drawable/ic_cc_address"
+        android:title="Credit Card Address" />
+
+
+    <item
+        android:id="@+id/payment_method"
+        android:icon="@drawable/ic_payment_method"
+        android:title="Payment Method" />
+
+
+    <item
+        android:id="@+id/saved_cart"
+        android:icon="@drawable/saved_cart"
+        android:title="Saved Cart" />
+
+
+    <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/ic_about_us"
+        android:title="About Us" />
+
+
+    <item
+        android:id="@+id/contact_us"
+        android:icon="@drawable/ic_contact_us"
+        android:title="Contact Us" />
+
+</menu>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ak.ui.home.fragment.HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_cold_storage"
+            app:destination="@id/navigation_cold_storage" />
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_weather"
+            app:destination="@id/navigation_weather" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_weather"
+        android:name="com.ak.ui.home.fragment.WeatherForecastFragment"
+        tools:layout="@layout/weather_forecast" />
+    <fragment
+        android:id="@+id/navigation_cold_storage"
+        android:name="com.ak.ui.home.fragment.ColdStorageFragment"
+        tools:layout="@layout/cold_storages" />
+
+    <fragment
+        android:id="@+id/navigation_store"
+        android:name="com.ak.ui.home.fragment.StoreFragment"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_varatha"
+        android:name="com.ak.ui.home.fragment.VarathaFragment"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.ak.ui.home.fragment.CartFragment"
+        tools:layout="@layout/home_fragment" />
+
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.ak.ui.home.fragment.ProfileFragment"
+        tools:layout="@layout/home_fragment" />
+
+</navigation>
