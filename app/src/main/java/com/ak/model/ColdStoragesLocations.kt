@@ -16,5 +16,6 @@ data class ColdStoragesLocations(
     val serialNo: String,
     val storageAddress: String,
     val storageName: String,
+    val imageName: String,
     val type: String
 ) : Parcelable

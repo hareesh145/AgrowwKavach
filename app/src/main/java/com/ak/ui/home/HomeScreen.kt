@@ -124,5 +124,9 @@ class HomeScreen : AppCompatActivity() {
         navController.navigate(navigationID)
     }
 
+    fun navigateToNext(navigationID : Int, bundle: Bundle) {
+        navController.navigate(navigationID, bundle)
+    }
+
 
 }

@@ -18,5 +18,7 @@ class NetworkRepository {
     suspend fun getColdStorages(jsonObject: JsonObject) =
         retrofitInstance.getColdStorages(jsonObject)
 
+    suspend fun getCategories(jsonObject: JsonObject) = retrofitInstance.getCategories(jsonObject)
 
+    suspend fun getBrands(jsonObject: JsonObject) = retrofitInstance.getBrands(jsonObject)
 }

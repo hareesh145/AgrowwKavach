@@ -16,7 +16,24 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_weather"
             app:destination="@id/navigation_weather" />
+        <action
+            android:id="@+id/action_navigation_home_to_product"
+            app:destination="@+id/navigation_products" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_products"
+        android:name="com.ak.ui.home.fragment.ProductFragment"
+        tools:layout="@layout/products_fragment_layout">
+        <action
+            android:id="@+id/action_navigation_products_to_navigation_product_details"
+            app:destination="@id/navigation_product_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product_details"
+        android:name="com.ak.ui.product.ProductDetailsFragment"
+        tools:layout="@layout/product_details_fragment_layout" />
 
     <fragment
         android:id="@+id/navigation_weather"

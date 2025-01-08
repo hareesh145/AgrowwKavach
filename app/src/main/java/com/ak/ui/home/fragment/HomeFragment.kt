@@ -9,15 +9,19 @@ import androidx.fragment.app.Fragment
 import com.ak.R
 import com.ak.databinding.HomeFragmentBinding
 import com.ak.model.HomeOptionModel
+import com.ak.ui.adapter.BrandsAdapter
+import com.ak.ui.adapter.CategoriesAdapter
 import com.ak.ui.adapter.HomeOptionsAdapter
-import com.ak.ui.adapter.ProductListAdapter
 import com.ak.ui.home.HomeScreen
+import com.ak.util.Utils
+import com.google.gson.JsonObject
 
 class HomeFragment : Fragment() {
     private val homeOptions = arrayListOf<HomeOptionModel>()
 
     private val productsList = arrayListOf<HomeOptionModel>()
     lateinit var binding: HomeFragmentBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +78,61 @@ class HomeFragment : Fragment() {
                 }
             }
 
-        binding.productsList.adapter = ProductListAdapter(productsList)
+        getCategories()
+        binding.productCategories.setOnClickListener {
+            getCategories()
+        }
+
+        binding.brandsSection.setOnClickListener {
+            getBrands()
+        }
 
 
+    }
+
+    private fun getBrands() {
+        Utils.showProgessBar(requireActivity())
+        (requireActivity() as HomeScreen).akViewModel.getBrands(JsonObject().apply {
+            addProperty("deleteFlag", "N")
+        })
+        (requireActivity() as HomeScreen).akViewModel.brandsResponse.observe(viewLifecycleOwner) {
+            Utils.hideProgressBar()
+            if (it.success) {
+                // Update UI
+                binding.productsList.adapter = BrandsAdapter(it.brandsList) {
+                    (requireActivity() as HomeScreen).navigateToNext(
+                        R.id.navigation_products,
+                        Bundle().apply {
+                            putInt("ecomBrandsId", it.brandId)
+                        })
+                }
+
+            } else {
+                // Show error message
+            }
+        }
+    }
+
+    private fun getCategories() {
+        Utils.showProgessBar(requireActivity())
+        (requireActivity() as HomeScreen).akViewModel.getCategories(JsonObject().apply {
+            addProperty("deleteFlag", "N")
+        })
+        (requireActivity() as HomeScreen).akViewModel.categoriesResponse.observe(viewLifecycleOwner) {
+            Utils.hideProgressBar()
+            if (it.success) {
+                // Update UI
+                binding.productsList.adapter = CategoriesAdapter(it.categoriesList) {
+                    (requireActivity() as HomeScreen).navigateToNext(
+                        R.id.navigation_products,
+                        Bundle().apply {
+                            putInt("ecomCategoriesId", it.ecomCategoriesId)
+                        })
+                }
+
+            } else {
+                // Show error message
+            }
+        }
     }
 }

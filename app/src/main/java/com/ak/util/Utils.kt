@@ -41,7 +41,7 @@ import java.util.UUID
 
 object Utils {
 
-    private var loaderDialog: LoaderDialog? = null
+    var loaderDialog: LoaderDialog? = null
 
     private const val TAG = "Doctnow"
     fun logD(message: String) {
@@ -288,8 +288,6 @@ object Utils {
     fun showSnackBar(view: View?, message: String?) {
         Snackbar.make(view!!, message!!, Snackbar.LENGTH_LONG).show()
     }
-
-
 
 
     fun savePrescription(body: ResponseBody): File? {
