@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ak.databinding.ItemProductBinding
 import com.ak.model.Products
 
-class ProductItemAdapter(
+class AgrowwProductsAdapter(
     val productList: List<Products>,
     val onItemClick: (product: Products) -> Unit
-) : RecyclerView.Adapter<ProductItemAdapter.ProductItemVH>() {
+) : RecyclerView.Adapter<AgrowwProductsAdapter.ProductItemVH>() {
 
     inner class ProductItemVH(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Products) {

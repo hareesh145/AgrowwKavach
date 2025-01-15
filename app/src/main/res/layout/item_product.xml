@@ -11,6 +11,10 @@
         <variable
             name="drugAdapter"
             type="com.ak.ui.adapter.ProductItemAdapter" />
+
+        <variable
+            name="product"
+            type="com.ak.model.Products" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -56,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:paddingBottom="2dp"
+                    android:text="@{product.shortDesc}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,34 +77,13 @@
                     android:lineSpacingExtra="@dimen/_4sdp"
                     android:maxLines="4"
                     android:paddingBottom="2dp"
+                    android:text="@{product.mfrName}"
                     android:textColor="#767676"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_11ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tablet_name"
                     tools:text="abcder" />
 
-                <LinearLayout
-                    android:id="@+id/rx_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/_6sdp"
-                    android:paddingTop="@dimen/_2sdp"
-                    android:paddingEnd="@dimen/_6sdp"
-                    android:paddingBottom="@dimen/_2sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mfg_txt">
-
-
-                    <TextView
-                        style="@style/mediumTextStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Price"
-                        android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/mfg_txt"
@@ -109,11 +93,11 @@
                     android:layout_alignStart="@+id/tablet_name"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:paddingBottom="2dp"
+                    android:text="Price :"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_11ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mg_txt"
-                    tools:text="Micro Labs Ltd" />
+                    app:layout_constraintTop_toBottomOf="@+id/mg_txt" />
 
 
                 <TextView
@@ -124,10 +108,11 @@
                     android:layout_alignStart="@+id/tablet_name"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:paddingBottom="2dp"
+                    android:text="@{@string/amount_with_inr_symbol(product.costPrice)}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rx_view" />
+                    app:layout_constraintTop_toBottomOf="@id/mfg_txt" />
 
 
                 <TextView
@@ -139,6 +124,7 @@
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:paddingBottom="2dp"
+                    android:text="@{@string/amount_with_inr_symbol(product.price)}"
                     android:textColor="@color/lightGreyTeal"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toEndOf="@+id/offer_amount_txt"

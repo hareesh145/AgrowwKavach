@@ -26,9 +26,14 @@
         android:name="com.ak.ui.home.fragment.ProductFragment"
         tools:layout="@layout/products_fragment_layout">
         <action
-            android:id="@+id/action_navigation_products_to_navigation_product_details"
-            app:destination="@id/navigation_product_details" />
+            android:id="@+id/action_navigation_products_to_navigation_agroww_products"
+            app:destination="@id/navigation_agroww_products" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_agroww_products"
+        android:name="com.ak.ui.fragment.AgrowwProductsFragment"
+        tools:layout="@layout/products_fragment_layout" />
 
     <fragment
         android:id="@+id/navigation_product_details"

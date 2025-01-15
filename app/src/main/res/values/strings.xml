@@ -3,4 +3,7 @@
     <string name="navigation_drawer_open">Navigation Drawer Open</string>
     <string name="navigation_drawer_close">Navigation Drawer Close</string>
     <string name="agroww_kavach">AGROWW KAVACH</string>
+
+    <string name="amount_with_inr_symbol">\u20B9 %s</string>
+    <string name="no_products_found">No Products Found</string>
 </resources>

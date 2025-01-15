@@ -14,7 +14,7 @@ class ProductDetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         ProductDetailsFragmentLayoutBinding.inflate(inflater, container, false)
             .also { binding = it }
         return binding.root

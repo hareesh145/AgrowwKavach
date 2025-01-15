@@ -21,4 +21,11 @@ class NetworkRepository {
     suspend fun getCategories(jsonObject: JsonObject) = retrofitInstance.getCategories(jsonObject)
 
     suspend fun getBrands(jsonObject: JsonObject) = retrofitInstance.getBrands(jsonObject)
+
+    suspend fun getAgrowwItemsByCategory(jsonObject: JsonObject) =
+        retrofitInstance.getAgrowwItemsByCategory(jsonObject)
+
+    suspend fun getAgrowwItemsByBrand(jsonObject: JsonObject) =
+        retrofitInstance.getAgrowwItemsByBrand(jsonObject)
+    suspend fun viewAgrowwItems(jsonObject: JsonObject) = retrofitInstance.viewAgrowwItems(jsonObject)
 }
