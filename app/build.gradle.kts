@@ -101,4 +101,5 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.android.gif.drawable)
+    implementation (libs.dotsindicator)
 }

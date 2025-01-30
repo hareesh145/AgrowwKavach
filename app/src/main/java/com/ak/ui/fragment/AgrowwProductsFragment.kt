@@ -25,16 +25,6 @@ class AgrowwProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as HomeScreen).akViewModel.viewAgrowwItems(JsonObject().apply {
-            addProperty("ecomAgrowwItemId", requireArguments().getInt("agrowwItemsId"))
-        })
 
-        (requireActivity() as HomeScreen).akViewModel.viewAgrowwItemsResponse.observe(
-            requireActivity()
-        ) {
-            it?.let {
-                println("Agroww Items: $it")
-            }
-        }
     }
 }

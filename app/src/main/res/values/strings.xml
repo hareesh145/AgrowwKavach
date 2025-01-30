@@ -6,4 +6,5 @@
 
     <string name="amount_with_inr_symbol">\u20B9 %s</string>
     <string name="no_products_found">No Products Found</string>
+    <string name="product_details">Product Details</string>
 </resources>

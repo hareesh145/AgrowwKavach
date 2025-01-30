@@ -1,9 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ProductDetailsActivity">
+
+
+        <!-- ViewPager for Images -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Bactrocera Cucurbitae"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+        <!-- Price Section -->
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="₹50 ₹80 23% Off"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+        <!-- Variants Section -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_price"
+            app:singleSelection="true" />
+
+        <!-- Description Section -->
+        <TextView
+            android:id="@+id/description_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipGroup" />
+
+        <!-- Recommended Products RecyclerView (Vertical) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRecommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/description_title" />
+
+        <!-- Similar Products RecyclerView (Horizontal) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSimilar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/recyclerRecommended" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="@color/light_gray">-->
+
+    <!--        <ScrollView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:fillViewport="true">-->
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="vertical">-->
+
+
+    <!--                &lt;!&ndash; ViewPager2 for Image Slider &ndash;&gt;-->
+    <!--                <RelativeLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="250dp"-->
+    <!--                    android:layout_marginTop="10dp">-->
+
+    <!--                    <androidx.viewpager2.widget.ViewPager2-->
+    <!--                        android:id="@+id/viewPager"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="match_parent" />-->
+
+    <!--                    &lt;!&ndash; Dots Indicator &ndash;&gt;-->
+    <!--                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
+    <!--                        android:id="@+id/dotsIndicator"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_alignParentBottom="true"-->
+    <!--                        android:layout_centerHorizontal="true"-->
+    <!--                        android:layout_marginBottom="10dp" />-->
+
+    <!--                    &lt;!&ndash; Favorite Icon Overlay &ndash;&gt;-->
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/favoriteIcon"-->
+    <!--                        android:layout_width="36dp"-->
+    <!--                        android:layout_height="36dp"-->
+    <!--                        android:layout_alignParentEnd="true"-->
+    <!--                        android:layout_margin="10dp"-->
+    <!--                        android:background="@drawable/bg_fav_shape"-->
+    <!--                        android:contentDescription="Favorite Icon"-->
+    <!--                        android:padding="8dp"-->
+    <!--                        android:src="@drawable/ic_heart"-->
+    <!--                        app:tint="@color/white" />-->
+    <!--                </RelativeLayout>-->
+
+    <!--                &lt;!&ndash; Product Title and Details &ndash;&gt;-->
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="vertical"-->
+    <!--                    android:padding="16dp">-->
+
+    <!--                    <TextView-->
+    <!--                        style="@style/mediumTextStyle"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:textColor="#000000"-->
+    <!--                        android:textSize="18sp"-->
+    <!--                        android:textStyle="bold"-->
+    <!--                        tools:text="Bactrocera Cucurbitae" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="4dp"-->
+    <!--                        android:text="Fruit Fly Lure"-->
+    <!--                        android:textColor="#555555"-->
+    <!--                        android:textSize="14sp" />-->
+
+    <!--                    &lt;!&ndash; Price Section &ndash;&gt;-->
+    <!--                    <LinearLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="8dp"-->
+    <!--                        android:orientation="horizontal">-->
+
+    <!--                        <TextView-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:text="₹50"-->
+    <!--                            android:textColor="#000000"-->
+    <!--                            android:textSize="18sp"-->
+    <!--                            android:textStyle="bold" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="10dp"-->
+    <!--                            android:text="₹80"-->
+    <!--                            android:textColor="#777777"-->
+    <!--                            android:textSize="14sp" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="10dp"-->
+    <!--                            android:text="23% Off"-->
+    <!--                            android:textColor="#83B572"-->
+    <!--                            android:textSize="14sp" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    &lt;!&ndash; Other Details &ndash;&gt;-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="8dp"-->
+    <!--                        android:text="Quantity: 100g"-->
+    <!--                        android:textColor="#555555"-->
+    <!--                        android:textSize="14sp" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Time Period: 90 Days"-->
+    <!--                        android:textColor="#555555"-->
+    <!--                        android:textSize="14sp" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Per Acre: 5-8"-->
+    <!--                        android:textColor="#555555"-->
+    <!--                        android:textSize="14sp" />-->
+    <!--                </LinearLayout>-->
+
+    <!--                &lt;!&ndash; Action Buttons &ndash;&gt;-->
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:background="#FFFFFF"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:padding="16dp">-->
+
+    <!--                    <Button-->
+    <!--                        android:layout_width="0dp"-->
+    <!--                        android:layout_height="50dp"-->
+    <!--                        android:layout_weight="1"-->
+    <!--                        android:backgroundTint="#83B572"-->
+    <!--                        android:text="Add to Cart"-->
+    <!--                        android:textColor="#FFFFFF" />-->
+
+    <!--                    <Button-->
+    <!--                        android:layout_width="0dp"-->
+    <!--                        android:layout_height="50dp"-->
+    <!--                        android:layout_marginStart="8dp"-->
+    <!--                        android:layout_weight="1"-->
+    <!--                        android:backgroundTint="#FFA500"-->
+    <!--                        android:text="Buy Now"-->
+    <!--                        android:textColor="#FFFFFF" />-->
+    <!--                </LinearLayout>-->
+    <!--            </LinearLayout>-->
+    <!--        </ScrollView>-->
+    <!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
 </layout>

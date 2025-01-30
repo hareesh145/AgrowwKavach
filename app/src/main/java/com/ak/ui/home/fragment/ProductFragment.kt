@@ -43,7 +43,7 @@ class ProductFragment : Fragment() {
                         if (it.productsList.isNotEmpty()) {
                             binding.productsRv.adapter = ProductItemAdapter(it.productsList) {
                                 // Handle item click
-                                (requireActivity() as HomeScreen).navigateToNext(R.id.navigation_agroww_products,
+                                (requireActivity() as HomeScreen).navigateToNext(R.id.navigation_product_details,
                                     Bundle().apply {
                                         putInt("agrowwItemsId", it.ecomAgrowwItemId)
                                     })

@@ -27,7 +27,7 @@
         tools:layout="@layout/products_fragment_layout">
         <action
             android:id="@+id/action_navigation_products_to_navigation_agroww_products"
-            app:destination="@id/navigation_agroww_products" />
+            app:destination="@id/navigation_product_details" />
     </fragment>
 
     <fragment
