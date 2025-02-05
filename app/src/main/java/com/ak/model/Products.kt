@@ -12,7 +12,7 @@ data class Products(
     val ecomCategoriesId: Int,
     val freeFreightEligible: String,
     val imageURL: Any,
-    val longDesc: Any,
+    val longDesc: String?,
     val mfrName: String,
     val mfrPartNum: String,
     val minSaleQty: Any,

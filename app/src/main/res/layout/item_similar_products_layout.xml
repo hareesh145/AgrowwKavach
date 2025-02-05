@@ -90,7 +90,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
-            android:paintFlags="strikeThruText"
             android:text="₹80"
             android:textColor="@color/greyTeal"
             android:textSize="@dimen/_12ssp"

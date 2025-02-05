@@ -39,12 +39,14 @@ class ProductDetailsFragment : Fragment() {
         ) {
             it?.let {
                 println("Agroww Items: ${Gson().toJson(it)}")
+                binding.productInfo = it.productInfo
+//                binding.viewPager.adapter = ProductListAdapter(it.productImages)
 
                 val variants = listOf("100g", "500g (Pack Of 100g)", "1kg")
                 val chipGroup: ChipGroup = binding.chipGroup
 
                 variants.forEach { variant ->
-                    val chip = Chip(requireActivity())
+                    val chip = Chip(requireContext())
                     chip.text = variant
                     chip.isCheckable = true
                     chipGroup.addView(chip)
