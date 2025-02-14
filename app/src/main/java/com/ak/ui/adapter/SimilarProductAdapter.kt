@@ -4,14 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ak.databinding.ItemProductBinding
+import com.ak.databinding.ItemSimilarProductsLayoutBinding
 import com.ak.model.Products
 
-class ProductItemAdapter(
+class SimilarProductAdapter(
     val productList: List<Products>,
     val onItemClick: (product: Products) -> Unit
-) : RecyclerView.Adapter<ProductItemAdapter.ProductItemVH>() {
+) : RecyclerView.Adapter<SimilarProductAdapter.ProductItemVH>() {
 
-    inner class ProductItemVH(val binding: ItemProductBinding) :
+    inner class ProductItemVH(val binding: ItemSimilarProductsLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Products) {
             // binding.productName.text = product.productName
@@ -29,7 +30,7 @@ class ProductItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemVH {
         return ProductItemVH(
-            ItemProductBinding.inflate(
+            ItemSimilarProductsLayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

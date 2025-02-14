@@ -10,291 +10,322 @@
             type="com.ak.model.Products" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ProductDetailsActivity">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_btns"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ProductDetailsActivity">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/view_pager_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/viewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tabLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:tabIndicatorGravity="center" />
+                    </LinearLayout>
+                    <!-- ViewPager for Images -->
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:layout_constraintTop_toBottomOf="@id/view_pager_card">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <!-- Product Name -->
+                        <TextView
+                            android:id="@+id/product_name"
+                            style="@style/mediumTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+                            android:text="@{productInfo.shortDesc}"
+                            android:textColor="@color/blackTeal"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Price Section -->
+                        <TextView
+                            android:id="@+id/product_price"
+                            style="@style/mediumTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:padding="8dp"
+                            android:text="@{@string/amount_with_inr_symbol(productInfo.costPrice)}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/product_name" />
+
+                        <TextView
+                            android:id="@+id/original_amount_txt"
+                            style="@style/mediumTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:padding="8dp"
+                            android:text="@{@string/amount_with_inr_symbol(productInfo.price)}"
+                            android:textColor="@color/lightGreyTeal"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintStart_toEndOf="@+id/product_price"
+                            app:layout_constraintTop_toBottomOf="@id/product_name"
+                            app:strikeThrough="@{true}" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
 
 
-            <!-- ViewPager for Images -->
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/chip_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:layout_constraintTop_toBottomOf="@id/product_card">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/variants_title"
+                            style="@style/boldTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Variants"
+                            android:textColor="@color/blackTeal"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:padding="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/variants_title"
+                            app:singleSelection="true" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Variants Section -->
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/description_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/chip_section">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/description_title"
+                            style="@style/boldTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Description"
+                            android:textColor="@color/blackTeal"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/description_message"
+                            style="@style/regularTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:padding="8dp"
+                            android:text="@{productInfo.longDesc}"
+                            android:textColor="@color/blackTeal"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="normal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/description_title" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Description Section -->
+
+
+                <!-- Recommended Products RecyclerView (Vertical) -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerRecommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:nestedScrollingEnabled="false"
+                    android:padding="8dp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/description_card" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/similar_products_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerRecommended">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/similar_products_title"
+                            style="@style/mediumTextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:text="Similar Products"
+                            android:textColor="@color/blackTeal"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintEnd_toStartOf="@+id/view_all"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/view_all"
+                            style="@style/mediumTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:text="@string/view_all"
+                            android:textColor="@color/view_all_txt_color"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerSimilar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/similar_products_title" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Similar Products RecyclerView (Horizontal) -->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_to_cart_btn"
                 android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:background="@drawable/bg_color_primary"
+                android:text="Add to Cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toStartOf="@+id/space_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/space_line"
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Product Name -->
-            <TextView
-                android:id="@+id/product_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@{productInfo.shortDesc}"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewPager" />
-
-            <!-- Price Section -->
-            <TextView
-                android:id="@+id/product_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@{@string/amount_with_inr_symbol(productInfo.costPrice)}"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_name" />
-
-            <!-- Variants Section -->
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_price"
-                app:singleSelection="true" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/description_card"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buy_now_btn"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                app:cardCornerRadius="@dimen/_6sdp"
-                app:cardElevation="@dimen/_2sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chipGroup">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/description_title"
-                        style="@style/boldTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="Description"
-                        android:textColor="@color/blackTeal"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/description_message"
-                        style="@style/mediumTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_8sdp"
-                        android:padding="8dp"
-                        android:text="@{productInfo.longDesc}"
-                        android:textColor="@color/blackTeal"
-                        android:textSize="@dimen/_14ssp"
-                        android:textStyle="normal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/description_title" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-            <!-- Description Section -->
-
-
-            <!-- Recommended Products RecyclerView (Vertical) -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerRecommended"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:padding="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/description_card" />
-
-            <!-- Similar Products RecyclerView (Horizontal) -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerSimilar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                app:layout_constraintTop_toBottomOf="@id/recyclerRecommended" />
-
+                android:background="@drawable/bg_buy_now"
+                android:text="Buy Now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/space_line"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        android:background="@color/light_gray">-->
-
-        <!--        <ScrollView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:fillViewport="true">-->
-
-        <!--            <LinearLayout-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:orientation="vertical">-->
-
-
-        <!--                &lt;!&ndash; ViewPager2 for Image Slider &ndash;&gt;-->
-        <!--                <RelativeLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="250dp"-->
-        <!--                    android:layout_marginTop="10dp">-->
-
-        <!--                    <androidx.viewpager2.widget.ViewPager2-->
-        <!--                        android:id="@+id/viewPager"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="match_parent" />-->
-
-        <!--                    &lt;!&ndash; Dots Indicator &ndash;&gt;-->
-        <!--                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
-        <!--                        android:id="@+id/dotsIndicator"-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_alignParentBottom="true"-->
-        <!--                        android:layout_centerHorizontal="true"-->
-        <!--                        android:layout_marginBottom="10dp" />-->
-
-        <!--                    &lt;!&ndash; Favorite Icon Overlay &ndash;&gt;-->
-        <!--                    <ImageView-->
-        <!--                        android:id="@+id/favoriteIcon"-->
-        <!--                        android:layout_width="36dp"-->
-        <!--                        android:layout_height="36dp"-->
-        <!--                        android:layout_alignParentEnd="true"-->
-        <!--                        android:layout_margin="10dp"-->
-        <!--                        android:background="@drawable/bg_fav_shape"-->
-        <!--                        android:contentDescription="Favorite Icon"-->
-        <!--                        android:padding="8dp"-->
-        <!--                        android:src="@drawable/ic_heart"-->
-        <!--                        app:tint="@color/white" />-->
-        <!--                </RelativeLayout>-->
-
-        <!--                &lt;!&ndash; Product Title and Details &ndash;&gt;-->
-        <!--                <LinearLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:orientation="vertical"-->
-        <!--                    android:padding="16dp">-->
-
-        <!--                    <TextView-->
-        <!--                        style="@style/mediumTextStyle"-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:textColor="#000000"-->
-        <!--                        android:textSize="18sp"-->
-        <!--                        android:textStyle="bold"-->
-        <!--                        tools:text="Bactrocera Cucurbitae" />-->
-
-        <!--                    <TextView-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="4dp"-->
-        <!--                        android:text="Fruit Fly Lure"-->
-        <!--                        android:textColor="#555555"-->
-        <!--                        android:textSize="14sp" />-->
-
-        <!--                    &lt;!&ndash; Price Section &ndash;&gt;-->
-        <!--                    <LinearLayout-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="8dp"-->
-        <!--                        android:orientation="horizontal">-->
-
-        <!--                        <TextView-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:text="₹50"-->
-        <!--                            android:textColor="#000000"-->
-        <!--                            android:textSize="18sp"-->
-        <!--                            android:textStyle="bold" />-->
-
-        <!--                        <TextView-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:layout_marginStart="10dp"-->
-        <!--                            android:text="₹80"-->
-        <!--                            android:textColor="#777777"-->
-        <!--                            android:textSize="14sp" />-->
-
-        <!--                        <TextView-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:layout_marginStart="10dp"-->
-        <!--                            android:text="23% Off"-->
-        <!--                            android:textColor="#83B572"-->
-        <!--                            android:textSize="14sp" />-->
-        <!--                    </LinearLayout>-->
-
-        <!--                    &lt;!&ndash; Other Details &ndash;&gt;-->
-        <!--                    <TextView-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="8dp"-->
-        <!--                        android:text="Quantity: 100g"-->
-        <!--                        android:textColor="#555555"-->
-        <!--                        android:textSize="14sp" />-->
-
-        <!--                    <TextView-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:text="Time Period: 90 Days"-->
-        <!--                        android:textColor="#555555"-->
-        <!--                        android:textSize="14sp" />-->
-
-        <!--                    <TextView-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:text="Per Acre: 5-8"-->
-        <!--                        android:textColor="#555555"-->
-        <!--                        android:textSize="14sp" />-->
-        <!--                </LinearLayout>-->
-
-        <!--                &lt;!&ndash; Action Buttons &ndash;&gt;-->
-        <!--                <LinearLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:background="#FFFFFF"-->
-        <!--                    android:orientation="horizontal"-->
-        <!--                    android:padding="16dp">-->
-
-        <!--                    <Button-->
-        <!--                        android:layout_width="0dp"-->
-        <!--                        android:layout_height="50dp"-->
-        <!--                        android:layout_weight="1"-->
-        <!--                        android:backgroundTint="#83B572"-->
-        <!--                        android:text="Add to Cart"-->
-        <!--                        android:textColor="#FFFFFF" />-->
-
-        <!--                    <Button-->
-        <!--                        android:layout_width="0dp"-->
-        <!--                        android:layout_height="50dp"-->
-        <!--                        android:layout_marginStart="8dp"-->
-        <!--                        android:layout_weight="1"-->
-        <!--                        android:backgroundTint="#FFA500"-->
-        <!--                        android:text="Buy Now"-->
-        <!--                        android:textColor="#FFFFFF" />-->
-        <!--                </LinearLayout>-->
-        <!--            </LinearLayout>-->
-        <!--        </ScrollView>-->
-        <!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
-
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

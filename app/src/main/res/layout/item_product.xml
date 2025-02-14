@@ -7,7 +7,6 @@
 
         <import type="android.view.View" />
 
-
         <variable
             name="drugAdapter"
             type="com.ak.ui.adapter.ProductItemAdapter" />
@@ -29,19 +28,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/medicine_img"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_90sdp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/icon_view"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:paddingRight="@dimen/_4sdp"
+                android:background="@drawable/bg_home_option"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/cart_cl"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/medicine_img"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_4sdp"
+                    android:src="@drawable/image_two"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cart_cl"
@@ -49,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/medicine_img"
-                app:layout_constraintStart_toEndOf="@+id/medicine_img"
+                app:layout_constraintLeft_toRightOf="@+id/icon_view"
+                app:layout_constraintStart_toEndOf="@+id/icon_view"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -155,25 +167,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/discount_off_txt">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_color_primary"
-                        android:padding="@dimen/_2sdp">
 
-                        <TextView
-                            android:id="@+id/add_drugs_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/_6sdp"
-                            android:paddingEnd="@dimen/_6sdp"
-                            android:text="Add To Cart"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/add_drugs_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/bg_color_primary"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:paddingEnd="@dimen/_6sdp"
+                        android:text="Add To Cart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

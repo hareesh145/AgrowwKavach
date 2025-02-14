@@ -4,5 +4,6 @@ data class AgrowwProductsResponse(
     val productInfo: Products,
     val success: Boolean,
     val successCode: String,
-    val recommendedProducts: List<Products>
+    val recommendedProducts: List<Products>,
+    val similarProducts: List<Products>
 )
