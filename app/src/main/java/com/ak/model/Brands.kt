@@ -4,5 +4,6 @@ data class Brands(
     val brandId: Int,
     val brandName: String,
     val deleteDate: Any,
-    val deleteFlag: String
+    val deleteFlag: String,
+    val image: String? = null
 )

@@ -3,8 +3,10 @@ package com.ak.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ak.R
 import com.ak.databinding.ItemCategoriesBrandsBinding
 import com.ak.model.Categories
+import com.bumptech.glide.Glide
 
 class CategoriesAdapter(
     private val listOfHomeOptionModel: List<Categories>,
@@ -34,6 +36,11 @@ class CategoriesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(categories: Categories) {
             binding.categories = categories
+            Glide.with(binding.root.context).load(
+                "http://www.agrowwkavach.com:8080/AK_Images/brands/${categories.image}"
+            ).placeholder(R.drawable.ic_placeholder).into(
+                binding.optionsImg
+            )
             itemView.setOnClickListener {
                 onItemClick(listOfHomeOptionModel[adapterPosition])
             }
