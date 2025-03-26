@@ -149,4 +149,7 @@ interface ApiInterface {
 
     @POST("view-ecom-agroww-items")
     suspend fun viewAgrowwItems(@Body jsonObject: JsonObject): Response<AgrowwProductsResponse>
+
+    @POST("cart")
+    suspend fun getCart(@Body jsonObject: JsonObject): Response<JsonObject>
 }

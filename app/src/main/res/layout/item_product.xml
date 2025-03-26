@@ -26,7 +26,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_4sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/icon_view"
@@ -120,7 +121,7 @@
                     android:layout_alignStart="@+id/tablet_name"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:paddingBottom="2dp"
-                    android:text="@{@string/amount_with_inr_symbol(product.costPrice)}"
+                    android:text="@{@string/amount_with_inr_symbol(product.price)}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +137,7 @@
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:paddingBottom="2dp"
-                    android:text="@{@string/amount_with_inr_symbol(product.price)}"
+                    android:text="@{@string/amount_with_inr_symbol(product.costPrice)}"
                     android:textColor="@color/lightGreyTeal"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toEndOf="@+id/offer_amount_txt"
@@ -169,7 +170,7 @@
 
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/add_drugs_btn"
+                        android:id="@+id/add_to_cart_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/bg_color_primary"
@@ -177,48 +178,46 @@
                         android:paddingEnd="@dimen/_6sdp"
                         android:text="Add To Cart"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_12ssp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="@dimen/_12ssp"/>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/increase_decrease_view"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_white"
                     android:elevation="@dimen/_8sdp"
                     android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/discount_off_txt">
 
                     <ImageView
                         android:id="@+id/decrese_view"
-                        android:layout_width="@dimen/_30sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:padding="@dimen/_6sdp"
+                        android:layout_width="@dimen/_34sdp"
+                        android:layout_height="@dimen/_34sdp"
                         android:src="@drawable/ic_minus"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/increase_decrease_value"
+                        app:layout_constraintEnd_toStartOf="@+id/quantity_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/black" />
 
 
                     <TextView
-                        android:id="@+id/increase_decrease_value"
+                        android:id="@+id/quantity_tv"
                         style="@style/boldTextStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:gravity="center_vertical"
+                        android:maxLength="3"
                         android:text="1"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_13ssp"
+                        android:textSize="@dimen/_14ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -226,13 +225,13 @@
 
                     <ImageView
                         android:id="@+id/increase_view"
-                        android:layout_width="@dimen/_30sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:src="@drawable/ic_plus"
+                        android:layout_width="@dimen/_34sdp"
+                        android:layout_height="@dimen/_34sdp"
                         android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_plus"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/increase_decrease_value"
+                        app:layout_constraintStart_toEndOf="@+id/quantity_tv"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/black" />
 

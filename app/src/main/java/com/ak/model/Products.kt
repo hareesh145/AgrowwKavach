@@ -2,6 +2,7 @@ package com.ak.model
 
 
 data class Products(
+    var ecomOrdersId: Int?=null,
     val addedDate: String,
     val additionalAttributes: Any,
     val attachmentFiles: Any,
@@ -11,7 +12,7 @@ data class Products(
     val ecomAgrowwItemId: Int,
     val ecomCategoriesId: Int,
     val freeFreightEligible: String,
-    val imageURL: Any,
+    val imageURL: String?,
     val longDesc: String?,
     val mfrName: String,
     val mfrPartNum: String,

@@ -13,6 +13,8 @@ import com.ak.ui.adapter.ImagePagerAdapter
 import com.ak.ui.adapter.ProductItemAdapter
 import com.ak.ui.adapter.SimilarProductAdapter
 import com.ak.ui.home.HomeScreen
+import com.ak.util.Utils
+import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.tabs.TabLayoutMediator
@@ -34,6 +36,7 @@ class ProductDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Utils.showProgessBar(requireContext())
         (requireActivity() as HomeScreen).akViewModel.viewAgrowwItems(JsonObject().apply {
             addProperty("ecomAgrowwItemId", requireArguments().getInt("agrowwItemsId"))
         })
@@ -41,6 +44,7 @@ class ProductDetailsFragment : Fragment() {
         (requireActivity() as HomeScreen).akViewModel.viewAgrowwItemsResponse.observe(
             requireActivity()
         ) {
+            Utils.hideProgressBar()
             it?.let {
                 println("Agroww Items: ${Gson().toJson(it)}")
 
@@ -49,16 +53,19 @@ class ProductDetailsFragment : Fragment() {
 //                binding.indicator.setViewPager(binding.scrollViewPager)
 
                 binding.productInfo = it.productInfo
-                binding.viewPager.adapter = ImagePagerAdapter(
-                    listOf(
-                        R.drawable.image_two,
-                        R.drawable.image_two,
-                        R.drawable.image_two
-                    )
-                )
-
-                // Attach TabLayout with ViewPager2
-                TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ -> }.attach()
+                Glide.with(binding.imageView)
+                    .load("http://www.agrowwkavach.com:8080/AK_Images/products/${it.productInfo.imageURL}")
+                    .into(binding.imageView)
+//                binding.viewPager.adapter = ImagePagerAdapter(
+//                    listOf(
+//                        R.drawable.image_two,
+//                        R.drawable.image_two,
+//                        R.drawable.image_two
+//                    )
+//                )
+//
+//                // Attach TabLayout with ViewPager2
+//                TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ -> }.attach()
 
                 val variants = listOf("100g", "500g (Pack Of 100g)", "1kg")
                 val chipGroup: ChipGroup = binding.chipGroup
@@ -79,29 +86,49 @@ class ProductDetailsFragment : Fragment() {
                     ).show()
                 }
 
-                binding.recyclerRecommended.adapter =
-                    ProductItemAdapter(it.recommendedProducts) { product ->
-                        Toast.makeText(
-                            requireActivity(),
-                            "Clicked: ${product.shortDesc}",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                    }
+                if (!it.recommendedProducts.isNullOrEmpty()) {
+                    binding.recyclerRecommended.visibility = View.VISIBLE
+                    binding.recyclerRecommended.adapter =
+                        ProductItemAdapter(it.recommendedProducts, { product ->
+                            Toast.makeText(
+                                requireActivity(),
+                                "Clicked: ${product.shortDesc}",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }, {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Added to cart: ${it.shortDesc}",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }, { _, _ ->
+
+                        })
+                } else {
+                    binding.recyclerRecommended.visibility = View.GONE
+                }
                 binding.recyclerSimilar.layoutManager = LinearLayoutManager(
                     requireContext(),
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                binding.recyclerSimilar.adapter =
-                    SimilarProductAdapter(it.similarProducts) { product ->
-                        Toast.makeText(
-                            requireActivity(),
-                            "Clicked: ${product.shortDesc}",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                    }
+
+                if (!it.similarProducts.isNullOrEmpty()) {
+                    binding.similarProductsCard.visibility = View.VISIBLE
+                    binding.recyclerSimilar.adapter =
+                        SimilarProductAdapter(it.similarProducts) { product ->
+                            Toast.makeText(
+                                requireActivity(),
+                                "Clicked: ${product.shortDesc}",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                } else {
+                    binding.similarProductsCard.visibility = View.GONE
+                }
 
             }
         }

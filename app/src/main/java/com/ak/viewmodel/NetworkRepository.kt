@@ -28,4 +28,10 @@ class NetworkRepository {
     suspend fun getAgrowwItemsByBrand(jsonObject: JsonObject) =
         retrofitInstance.getAgrowwItemsByBrand(jsonObject)
     suspend fun viewAgrowwItems(jsonObject: JsonObject) = retrofitInstance.viewAgrowwItems(jsonObject)
+
+    suspend fun addProductToCart(jsonObject: JsonObject) = retrofitInstance.addProductToCart(jsonObject)
+
+    suspend fun updateProductToCart(jsonObject: JsonObject) = retrofitInstance.updateProductToCart(jsonObject)
+
+    suspend fun getCart(jsonObject: JsonObject) = retrofitInstance.getCart(jsonObject)
 }
