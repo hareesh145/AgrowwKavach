@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ak.R
 import com.ak.SharedPref
+import com.ak.databinding.CustomTitleBarBinding
 import com.ak.databinding.HomeScreenBinding
 import com.ak.model.NavItem
 import com.ak.ui.adapter.NavAdapter
@@ -32,11 +33,27 @@ class HomeScreen : AppCompatActivity() {
         binding = HomeScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Log profile
         SharedPref.getInstance(this).userProfile?.let {
             Log.d("TAG", "onCreate: $it")
         }
 
-        val appBarConfiguration: AppBarConfiguration = AppBarConfiguration.Builder(
+        // Setup custom toolbar
+        val toolbar = binding.toolbar
+        setSupportActionBar(toolbar)
+        val customTitleBarBinding = CustomTitleBarBinding.inflate(layoutInflater)
+        supportActionBar?.apply {
+            setDisplayShowTitleEnabled(false)
+            setDisplayShowCustomEnabled(true)
+            setDisplayShowHomeEnabled(false)
+            setDisplayHomeAsUpEnabled(false)
+            customView = customTitleBarBinding.root
+        }
+        toolbar.navigationIcon = null // Hide default icon
+
+        // Setup navController
+        navController = findNavController(R.id.nav_host_fragment)
+        val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_home,
             R.id.navigation_store,
             R.id.navigation_varatha,
@@ -44,31 +61,37 @@ class HomeScreen : AppCompatActivity() {
             R.id.navigation_profile
         ).setOpenableLayout(binding.drawerLayout).build()
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        setupWithNavController(binding.toolbar, navController, appBarConfiguration)
+        // Setup drawer and bottom nav with navController
         setupWithNavController(binding.navView, navController)
+        binding.navView.setupWithNavController(navController)
 
-        toggle = ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            binding.toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        toggle.isDrawerIndicatorEnabled = false
-        binding.toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_menu)
+        // Manage nav icon and title manually
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val isTopLevel = appBarConfiguration.topLevelDestinations.contains(destination.id)
 
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        binding.toolbar.setNavigationOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            if (isTopLevel) {
+                customTitleBarBinding.menuIcon.setImageResource(R.drawable.ic_menu)
+                customTitleBarBinding.menuIcon.setOnClickListener {
+                    if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    } else {
+                        binding.drawerLayout.openDrawer(GravityCompat.START)
+                    }
+                }
             } else {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
+                customTitleBarBinding.menuIcon.setImageResource(R.drawable.ic_back)
+                customTitleBarBinding.menuIcon.setOnClickListener {
+                    navController.navigateUp()
+                }
             }
         }
 
+        // Setup drawer header
+        binding.navHeader.navItemIcon.setImageResource(R.drawable.ic_my_profile)
+        binding.navHeader.navItemTitle.text =
+            "${SharedPref.getInstance(this).userProfile?.firstName} ${SharedPref.getInstance(this).userProfile?.lastName}"
+
+        // Setup drawer nav items
         val navItems = listOf(
             NavItem(R.drawable.ic_my_profile, "My Profile"),
             NavItem(R.drawable.ic_my_order, "My Order"),
@@ -80,15 +103,12 @@ class HomeScreen : AppCompatActivity() {
             NavItem(R.drawable.ic_about_us, "About Us"),
             NavItem(R.drawable.ic_contact_us, "Contact Us")
         )
-        binding.navHeader.navItemIcon.setImageResource(R.drawable.ic_my_profile)
-        binding.navHeader.navItemTitle.text =
-            "${SharedPref.getInstance(this).userProfile?.firstName} ${SharedPref.getInstance(this).userProfile?.lastName}"
-        // Initialize RecyclerView
         binding.navRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.navRecyclerView.adapter = NavAdapter(navItems) { selectedItem ->
             handleNavItemClick(selectedItem)
         }
     }
+
 
     private fun handleNavItemClick(selectedItem: NavItem) {
         when (selectedItem.title) {

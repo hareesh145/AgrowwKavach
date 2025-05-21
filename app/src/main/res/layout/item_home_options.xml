@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/icon_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_60sdp"
             android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/bg_home_option"
             app:layout_constraintBottom_toTopOf="@+id/option_txt"

@@ -16,49 +16,13 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_48sdp"
-                android:background="@color/colorPrimary"
-                android:theme="?attr/actionBarTheme"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:contentInsetStartWithNavigation="0dp"
+                app:contentInsetStart="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:titleTextColor="@color/black">
-
-
-                <RelativeLayout
-                    android:id="@+id/topBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <!-- Menu Icon -->
-
-                    <!-- App Title -->
-                    <TextView
-                        android:id="@+id/appTitle"
-                        style="@style/boldTextStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="@string/agroww_kavach"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <!-- Notification Icon -->
-                    <ImageView
-                        android:id="@+id/notification_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="16dp"
-                        android:contentDescription="Notification Icon"
-                        android:src="@drawable/ic_notification" />
-
-                </RelativeLayout>
-
-
-            </androidx.appcompat.widget.Toolbar>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
