@@ -1,4 +1,4 @@
-package com.ak.apis
+package com.ak.data.remote
 
 import com.ak.model.AddColdStorage
 import com.ak.model.AddCreditCard

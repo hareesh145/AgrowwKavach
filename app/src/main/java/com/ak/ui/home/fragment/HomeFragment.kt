@@ -15,7 +15,9 @@ import com.ak.ui.adapter.HomeOptionsAdapter
 import com.ak.ui.home.HomeScreen
 import com.ak.util.Utils
 import com.google.gson.JsonObject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val homeOptions = arrayListOf<HomeOptionModel>()
 
@@ -70,6 +72,7 @@ class HomeFragment : Fragment() {
 
                     "Soil Testing" -> {
                         // Navigate to Soil Testing Screen
+                        (requireActivity() as HomeScreen).navigateToNext(R.id.navigation_soil_testing)
                     }
 
                     "Workshop" -> {

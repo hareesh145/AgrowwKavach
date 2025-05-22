@@ -21,13 +21,7 @@ class HomeOptionsAdapter(
 
         init {
             binding.root.setOnClickListener {
-                when (listOfHomeOptionModel[adapterPosition].optionText) {
-                    "Weather Forecast" ->
-                        listener.invoke(listOfHomeOptionModel[adapterPosition])
-
-                    "Cold Storage" ->
-                        listener.invoke(listOfHomeOptionModel[adapterPosition])
-                }
+                listener.invoke(listOfHomeOptionModel[adapterPosition])
             }
         }
 

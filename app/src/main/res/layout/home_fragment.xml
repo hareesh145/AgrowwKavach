@@ -30,18 +30,13 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="@dimen/_8sdp"
                     android:gravity="center"
+                    android:drawableEnd="@drawable/ic_mic"
                     android:hint="Search"
-                    android:padding="8dp"
+                    android:padding="@dimen/_8sdp"
                     android:textSize="14sp" />
 
-                <ImageView
-                    android:id="@+id/voiceSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="Voice Search"
-                    android:src="@drawable/ic_mic" />
             </LinearLayout>
 
             <!-- Image Slider -->
@@ -71,7 +66,7 @@
             <!-- Product Categories -->
             <TextView
                 android:id="@+id/productCategories"
-                style="@style/mediumTextStyle"
+                style="@style/regularTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -80,21 +75,21 @@
                 android:fontFamily="@font/roboto_black"
                 android:text="Categories"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/categories" />
 
             <TextView
                 android:id="@+id/brandsSection"
+                style="@style/regularTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_white"
-                android:fontFamily="@font/roboto_black"
                 android:text="  Brands  "
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toEndOf="@id/productCategories"
                 app:layout_constraintTop_toBottomOf="@id/categories" />
 

@@ -1,7 +1,7 @@
 package com.ak.model
 
 data class STLResponse(
-    val soilTestingLaboratoriesList: List<SoilTestingLaboratories>,
-    val success: Boolean,
-    val successCode: String
+    val soilTestingLaboratoriesList: List<SoilTestingLaboratories>?=null,
+    val success: Boolean?= null,
+    val successCode: String?= null,
 )

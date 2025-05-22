@@ -1,11 +1,21 @@
 package com.ak.util
 
-open class Resource<T>(
-    val data: T? = null,
-    val message: String? = null,
-    val responseCode: Int? = null
-) {
-    class Success<T>(data: T) : Resource<T>(data)
-    class Error<T>(message: String, data: T? = null, responseCode: Int) : Resource<T>(data, message,responseCode)
-    class Loading<T> : Resource<T>()
+sealed class Result<out T> {
+    data object Loading : Result<Nothing>()
+    data class Success<out T>(val data: T) : Result<T>()
+    data class Error(
+        val message: String? = null,
+        val throwable: Throwable? = null
+    ) : Result<Nothing>()
+    data object Idle : Result<Nothing>()
+}
+
+
+suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
+    return try {
+        Result.Success(apiCall())
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Result.Error(e.message ?: "Unknown error", e)
+    }
 }

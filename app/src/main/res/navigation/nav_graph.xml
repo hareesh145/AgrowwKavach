@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_product"
             app:destination="@+id/navigation_products" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_soil_testing"
+            app:destination="@id/navigation_soil_testing" />
     </fragment>
 
     <fragment
@@ -47,6 +50,10 @@
     <fragment
         android:id="@+id/navigation_cold_storage"
         android:name="com.ak.ui.home.fragment.ColdStorageFragment"
+        tools:layout="@layout/cold_storages" />
+    <fragment
+        android:id="@+id/navigation_soil_testing"
+        android:name="com.ak.ui.home.fragment.SoilTestFragment"
         tools:layout="@layout/cold_storages" />
 
     <fragment

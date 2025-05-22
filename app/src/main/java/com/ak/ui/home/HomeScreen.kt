@@ -19,7 +19,9 @@ import com.ak.model.NavItem
 import com.ak.ui.adapter.NavAdapter
 import com.ak.viewmodel.AKViewModel
 import com.ak.viewmodel.NetworkRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeScreen : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle

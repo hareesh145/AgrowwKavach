@@ -11,5 +11,6 @@ data class SoilTestingLaboratories(
     val mobileNumber: String,
     val serialNo: Int,
     val soilTestingLaboratoriesId: Int,
-    val type: String
+    val type: String,
+    val imageName: String? = null,
 )

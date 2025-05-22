@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DistrictResponse(
-    val districtsList: List<Districts>
+    val districtsList: List<Districts>? = null,
 ) : Parcelable
