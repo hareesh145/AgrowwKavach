@@ -87,7 +87,6 @@ class HomeScreen : AppCompatActivity() {
         }
 
         // Setup drawer header
-        binding.navHeader.navItemIcon.setImageResource(R.drawable.ic_my_profile)
         binding.navHeader.navItemTitle.text =
             "${SharedPref.getInstance(this).userProfile?.firstName} ${SharedPref.getInstance(this).userProfile?.lastName}"
 
@@ -99,7 +98,7 @@ class HomeScreen : AppCompatActivity() {
             NavItem(R.drawable.ic_shipping_address, "Shipping Address"),
             NavItem(R.drawable.ic_cc_address, "Credit Card Address"),
             NavItem(R.drawable.ic_payment_method, "Payment Method"),
-            NavItem(R.drawable.saved_cart, "Saved Cart"),
+            NavItem(R.drawable.ic_saved_cart, "Saved Cart"),
             NavItem(R.drawable.ic_about_us, "About Us"),
             NavItem(R.drawable.ic_contact_us, "Contact Us")
         )

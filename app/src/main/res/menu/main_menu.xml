@@ -37,7 +37,7 @@
 
     <item
         android:id="@+id/saved_cart"
-        android:icon="@drawable/saved_cart"
+        android:icon="@drawable/ic_saved_cart"
         android:title="Saved Cart" />
 
 
