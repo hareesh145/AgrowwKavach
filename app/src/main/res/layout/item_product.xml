@@ -68,13 +68,13 @@
 
                 <TextView
                     android:id="@+id/tablet_name"
-                    style="@style/boldTextStyle"
+                    style="@style/mediumTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:paddingBottom="2dp"
                     android:text="@{product.shortDesc}"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

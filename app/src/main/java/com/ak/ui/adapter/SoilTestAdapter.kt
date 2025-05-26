@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 class SoilTestAdapter(
     private val coldStorageList: List<SoilTestingLaboratories>
 ) : RecyclerView.Adapter<SoilTestAdapter.ColdStorageViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoilTestAdapter.ColdStorageViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColdStorageViewHolder {
         val binding =
             ItemColdStorageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ColdStorageViewHolder(binding)

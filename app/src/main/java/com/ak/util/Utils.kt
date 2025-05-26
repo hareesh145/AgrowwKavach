@@ -98,6 +98,16 @@ object Utils {
         }
     }
 
+    fun convertDateFormatWithSpaceTime(date: String?): String? {
+        return try {
+            val simpleDateFormat =
+                SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS")
+            val format = SimpleDateFormat("dd MMM yyyy hh:mm a")
+            format.format(simpleDateFormat.parse(date)).uppercase(Locale.getDefault())
+        } catch (e: Exception) {
+            date
+        }
+    }
     fun convertDateFormatWithTime(date: String?): String? {
         return try {
             val simpleDateFormat =

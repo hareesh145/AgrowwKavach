@@ -52,7 +52,9 @@
             android:exported="false"
             android:theme="@style/Theme.AgrowwKavach" />
 
-
+            <activity android:name=".ui.MyOrderActivity"
+                android:exported="true"
+                android:theme="@style/Theme.AgrowwKavach" />
 
 
     </application>

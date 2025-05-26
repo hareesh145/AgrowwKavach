@@ -1,5 +1,6 @@
 package com.ak.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,6 +17,7 @@ import com.ak.SharedPref
 import com.ak.databinding.CustomTitleBarBinding
 import com.ak.databinding.HomeScreenBinding
 import com.ak.model.NavItem
+import com.ak.ui.MyOrderActivity
 import com.ak.ui.adapter.NavAdapter
 import com.ak.viewmodel.AKViewModel
 import com.ak.viewmodel.NetworkRepository
@@ -118,7 +120,7 @@ class HomeScreen : AppCompatActivity() {
             }
 
             "My Order" -> {
-                Log.d("TAG", "handleNavItemClick: My Order")
+                startActivity(Intent(this, MyOrderActivity::class.java))
             }
 
             "My List" -> {
@@ -141,11 +143,11 @@ class HomeScreen : AppCompatActivity() {
 
     }
 
-    fun navigateToNext(navigationID : Int) {
+    fun navigateToNext(navigationID: Int) {
         navController.navigate(navigationID)
     }
 
-    fun navigateToNext(navigationID : Int, bundle: Bundle) {
+    fun navigateToNext(navigationID: Int, bundle: Bundle) {
         navController.navigate(navigationID, bundle)
     }
 

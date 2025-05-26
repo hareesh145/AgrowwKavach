@@ -13,6 +13,7 @@ import com.ak.model.CreditCardListResponse
 import com.ak.model.DistrictResponse
 import com.ak.model.LoginModel
 import com.ak.model.LoginResponseModel
+import com.ak.model.MyOrdersResponse
 import com.ak.model.OrderReviewResponse
 import com.ak.model.ProductsListResponse
 import com.ak.model.STLResponse
@@ -136,7 +137,7 @@ interface ApiInterface {
     suspend fun orderReview(@Body jsonObject: JsonObject): Response<OrderReviewResponse>
 
     @POST("orders")
-    suspend fun getOrders(@Body jsonObject: JsonObject): Response<JsonObject>
+    suspend fun getOrders(@Body jsonObject: JsonObject): Response<MyOrdersResponse>
 
     @POST("orders-checkout-status")
     suspend fun getOrdersCheckoutStatus(@Body jsonObject: JsonObject): Response<JsonObject>

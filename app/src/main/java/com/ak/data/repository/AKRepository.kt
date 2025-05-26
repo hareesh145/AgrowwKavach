@@ -7,6 +7,7 @@ import com.ak.model.ColdStorageResponse
 import com.ak.model.DistrictResponse
 import com.ak.model.LoginModel
 import com.ak.model.LoginResponseModel
+import com.ak.model.MyOrdersResponse
 import com.ak.model.ProductsListResponse
 import com.ak.model.STLResponse
 import com.ak.model.StateResponse
@@ -27,4 +28,7 @@ interface AKRepository {
     suspend fun addProductToCart(jsonObject: JsonObject): Result<JsonObject>
     suspend fun updateProductToCart(jsonObject: JsonObject): Result<JsonObject>
     suspend fun getCart(jsonObject: JsonObject): Result<JsonObject>
+
+    //My Account
+    suspend fun getMyOrders(jsonObject: JsonObject): Result<MyOrdersResponse>
 }
