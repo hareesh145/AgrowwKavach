@@ -9,4 +9,8 @@
     <string name="product_details">Product Details</string>
     <string name="view_all">View All</string>
     <string name="my_orders">My Orders</string>
+    <string name="save_address">Save Address</string>
+    <string name="add_new_address">Add New Shipping Address</string>
+    <string name="saved_addresses">Saved Addresses</string>
+    <string name="address_line1">Address Line1*</string>
 </resources>

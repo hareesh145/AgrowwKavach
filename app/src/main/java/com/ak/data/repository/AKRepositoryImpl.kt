@@ -11,6 +11,7 @@ import com.ak.model.LoginResponseModel
 import com.ak.model.MyOrdersResponse
 import com.ak.model.ProductsListResponse
 import com.ak.model.STLResponse
+import com.ak.model.ShippingResponseModel
 import com.ak.model.StateResponse
 import com.ak.util.Result
 import com.ak.util.safeApiCall
@@ -100,6 +101,17 @@ class AKRepositoryImpl @Inject constructor(
                 response.body() ?: MyOrdersResponse()
             } else {
                 throw Exception("Failed to load my orders")
+            }
+        }
+    }
+
+    override suspend fun getShippings(jsonObject: JsonObject): Result<ShippingResponseModel> {
+        return safeApiCall {
+            val response = api.getShippings(jsonObject)
+            if (response.isSuccessful) {
+                response.body() ?: ShippingResponseModel()
+            } else {
+                throw Exception("Failed to load shipping data")
             }
         }
     }

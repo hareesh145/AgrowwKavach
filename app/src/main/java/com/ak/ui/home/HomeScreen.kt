@@ -18,6 +18,7 @@ import com.ak.databinding.CustomTitleBarBinding
 import com.ak.databinding.HomeScreenBinding
 import com.ak.model.NavItem
 import com.ak.ui.MyOrderActivity
+import com.ak.ui.MyShippingAddressActivity
 import com.ak.ui.adapter.NavAdapter
 import com.ak.viewmodel.AKViewModel
 import com.ak.viewmodel.NetworkRepository
@@ -102,9 +103,9 @@ class HomeScreen : AppCompatActivity() {
             NavItem(R.drawable.ic_shipping_address, "Shipping Address"),
             NavItem(R.drawable.ic_cc_address, "Credit Card Address"),
             NavItem(R.drawable.ic_payment_method, "Payment Method"),
-            NavItem(R.drawable.ic_saved_cart, "Saved Cart"),
-            NavItem(R.drawable.ic_about_us, "About Us"),
-            NavItem(R.drawable.ic_contact_us, "Contact Us")
+            NavItem(R.drawable.ic_saved_cart, "Saved Cart")
+            /*, NavItem(R.drawable.ic_about_us, "About Us"),
+             NavItem(R.drawable.ic_contact_us, "Contact Us")*/
         )
         binding.navRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.navRecyclerView.adapter = NavAdapter(navItems) { selectedItem ->
@@ -128,7 +129,7 @@ class HomeScreen : AppCompatActivity() {
             }
 
             "Shipping Address" -> {
-                Log.d("TAG", "handleNavItemClick: Shipping Address")
+                startActivity(Intent(this, MyShippingAddressActivity::class.java))
             }
 
             "Credit Card Address" -> {

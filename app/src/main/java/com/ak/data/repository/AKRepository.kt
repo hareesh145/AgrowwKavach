@@ -10,6 +10,7 @@ import com.ak.model.LoginResponseModel
 import com.ak.model.MyOrdersResponse
 import com.ak.model.ProductsListResponse
 import com.ak.model.STLResponse
+import com.ak.model.ShippingResponseModel
 import com.ak.model.StateResponse
 import com.ak.util.Result
 import com.google.gson.JsonObject
@@ -31,4 +32,7 @@ interface AKRepository {
 
     //My Account
     suspend fun getMyOrders(jsonObject: JsonObject): Result<MyOrdersResponse>
+
+    //Shipping Address
+    suspend fun getShippings(jsonObject: JsonObject): Result<ShippingResponseModel>
 }

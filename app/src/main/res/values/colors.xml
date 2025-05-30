@@ -28,5 +28,6 @@
     <color name="light_gray">#EAF5EA</color>
     <color name="view_all_txt_color">#B8FF0000</color>
     <color name="bg_buy_now_color">#FF8C00</color>
+    <color name="searchBarHintColor">#42000000</color>
 
 </resources>

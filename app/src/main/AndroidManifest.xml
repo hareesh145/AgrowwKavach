@@ -39,7 +39,6 @@
             android:theme="@style/Theme.AgrowwKavach" />
 
 
-
         <activity
             android:name=".ui.home.HomeScreen"
             android:exported="true"
@@ -52,9 +51,14 @@
             android:exported="false"
             android:theme="@style/Theme.AgrowwKavach" />
 
-            <activity android:name=".ui.MyOrderActivity"
-                android:exported="true"
-                android:theme="@style/Theme.AgrowwKavach" />
+        <activity
+            android:name=".ui.MyOrderActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AgrowwKavach" />
+        <activity
+            android:name=".ui.MyShippingAddressActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AgrowwKavach" />
 
 
     </application>
