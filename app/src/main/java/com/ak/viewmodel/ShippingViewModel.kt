@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ak.domain.usecase.ShippingUseCase
+import com.ak.model.AddShippingModel
 import com.ak.model.ShippingResponseModel
 import com.ak.util.Result
 import com.google.gson.JsonObject
@@ -24,6 +25,9 @@ class ShippingViewModel @Inject constructor(
     private val _shippingData = MutableLiveData<Result<ShippingResponseModel>>()
     val shippingData: LiveData<Result<ShippingResponseModel>> get() = _shippingData
 
+    private val _addShippingData = MutableLiveData<Result<JsonObject>>()
+    val addShippingData: LiveData<Result<JsonObject>> get() = _addShippingData
+
     fun fetchShipping(request: JsonObject) {
         viewModelScope.launch {
             _shippingData.value = Result.Loading
@@ -32,6 +36,18 @@ class ShippingViewModel @Inject constructor(
                 _shippingData.value = response
             } catch (e: Exception) {
                 _shippingData.value = Result.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun addShipping(addShippingModel: AddShippingModel) {
+        viewModelScope.launch {
+            _addShippingData.value = Result.Loading
+            try {
+                val response = shippingUseCase(addShippingModel)
+                _addShippingData.value = response
+            } catch (e: Exception) {
+                _addShippingData.value = Result.Error(e.localizedMessage ?: "Unknown error")
             }
         }
     }

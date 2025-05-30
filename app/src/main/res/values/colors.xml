@@ -29,5 +29,9 @@
     <color name="view_all_txt_color">#B8FF0000</color>
     <color name="bg_buy_now_color">#FF8C00</color>
     <color name="searchBarHintColor">#42000000</color>
+    <color name="switch_thumb_on">#FFFFFF</color>
+    <color name="switch_thumb_off">@color/greyTeal</color>
+    <color name="switch_track_on">#4CAF50</color>  <!-- Green -->
+    <color name="switch_track_off">#BDBDBD</color> <!-- Grey -->
 
 </resources>

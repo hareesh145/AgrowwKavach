@@ -10,8 +10,8 @@
 
         <ImageView
             android:id="@+id/close_mark"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/close_vector"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,84 +21,111 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_weight="1"
+            android:background="@drawable/bg_bottom_sheet_dialog_fragment"
             android:orientation="vertical"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/close_mark">
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_default_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:switchMinWidth="56dp"
+                android:switchPadding="8dp"
+                android:thumb="@drawable/custom_switch_thumb"
+                android:track="@drawable/custom_switch_track" />
+
+            <EditText
                 android:id="@+id/office_building"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_more_radious"
                 android:hint="@string/address_line1"
                 android:inputType="text"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/address_line_2"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_more_radious"
-                android:hint="Address Line2*"
-                android:padding="10dp" />
+                android:hint="@string/address_line2"
+                android:padding="@dimen/_8sdp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/city_txt"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_stroke"
-                android:hint="City / Town / Village*"
-                android:padding="10dp" />
+                android:hint="@string/city_town_village"
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/name"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_stroke"
-                android:hint="Your name*"
+                android:hint="@string/your_name"
                 android:inputType="textEmailAddress"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/state"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_stroke"
-                android:hint="State / Province / Region*"
-                android:padding="10dp" />
+                android:hint="@string/state_province_region"
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/country"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_stroke"
-                android:hint="Country*"
-                android:padding="10dp" />
+                android:hint="@string/country"
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <EditText
                 android:id="@+id/postal_code"
+                style="@style/regularTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/background_with_stroke"
-                android:hint="Postal Code"
+                android:hint="@string/postal_code"
                 android:inputType="number"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="@dimen/_13ssp" />
 
             <LinearLayout
                 android:id="@+id/saveAddressCard"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_8sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/bg_white_curved"
                 android:gravity="center">
 
@@ -111,7 +138,7 @@
                     android:gravity="center"
                     android:text="@string/save_address"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
 
             </LinearLayout>

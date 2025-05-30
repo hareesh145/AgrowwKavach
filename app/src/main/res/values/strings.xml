@@ -13,4 +13,11 @@
     <string name="add_new_address">Add New Shipping Address</string>
     <string name="saved_addresses">Saved Addresses</string>
     <string name="address_line1">Address Line1*</string>
+    <string name="no_address_found"> No Shipping Address Found</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="state_province_region">State / Province / Region*</string>
+    <string name="country">Country*</string>
+    <string name="your_name">Your name*</string>
+    <string name="city_town_village">City / Town / Village*</string>
+    <string name="address_line2">Address Line2*</string>
 </resources>

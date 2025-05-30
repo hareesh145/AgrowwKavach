@@ -1,6 +1,7 @@
 package com.ak.data.repository
 
 import com.ak.data.remote.ApiInterface
+import com.ak.model.AddShippingModel
 import com.ak.model.AgrowwProductsResponse
 import com.ak.model.BrandsResponse
 import com.ak.model.CategoriesResponse
@@ -112,6 +113,17 @@ class AKRepositoryImpl @Inject constructor(
                 response.body() ?: ShippingResponseModel()
             } else {
                 throw Exception("Failed to load shipping data")
+            }
+        }
+    }
+
+    override suspend fun addShipping(jsonObject: AddShippingModel): Result<JsonObject> {
+        return safeApiCall {
+            val response = api.addShipping(jsonObject)
+            if (response.isSuccessful) {
+                response.body() ?: JsonObject()
+            } else {
+                throw Exception("Failed to add shipping")
             }
         }
     }

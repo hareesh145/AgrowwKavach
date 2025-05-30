@@ -1,5 +1,6 @@
 package com.ak.data.repository
 
+import com.ak.model.AddShippingModel
 import com.ak.model.AgrowwProductsResponse
 import com.ak.model.BrandsResponse
 import com.ak.model.CategoriesResponse
@@ -35,4 +36,5 @@ interface AKRepository {
 
     //Shipping Address
     suspend fun getShippings(jsonObject: JsonObject): Result<ShippingResponseModel>
+    suspend fun addShipping(jsonObject: AddShippingModel): Result<JsonObject>
 }
