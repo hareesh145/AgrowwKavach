@@ -20,4 +20,5 @@
     <string name="your_name">Your name*</string>
     <string name="city_town_village">City / Town / Village*</string>
     <string name="address_line2">Address Line2*</string>
+    <string name="edit">Edit</string>
 </resources>

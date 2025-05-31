@@ -2,20 +2,20 @@ package com.ak.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.ak.databinding.ShippingAddressLayoutBinding
-import com.ak.viewmodel.ShippingViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
+import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.ak.R
 import com.ak.SharedPref
 import com.ak.databinding.CustomTitleViewBinding
-import com.ak.ui.MyOrderActivity
+import com.ak.databinding.ShippingAddressLayoutBinding
+import com.ak.ui.adapter.ShippingAdapter
 import com.ak.ui.dialogs.AddressBottomSheet
-import com.google.gson.JsonObject
 import com.ak.util.Result
 import com.ak.util.Utils
+import com.ak.viewmodel.ShippingViewModel
+import com.google.gson.JsonObject
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyShippingAddressActivity : AppCompatActivity() {
@@ -63,12 +63,20 @@ class MyShippingAddressActivity : AppCompatActivity() {
                     Utils.hideProgressBar()
                     Log.d("TAG", "onCreate: ${result.data}")
                     // Handle success, update UI with shipping data
-//                    binding.addressesRclr.adapter = ShippingAdapter(result.data)
+                    binding.addressesRclr.adapter = ShippingAdapter(result.data.shippingList)
+                    binding.noAddressFound.visibility = if (result.data.shippingList.isNullOrEmpty()) {
+                        binding.noAddressFound.text = getString(R.string.no_address_found)
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
                 }
                 is Result.Error -> {
                     Utils.hideProgressBar()
                     // Handle error, show error message
                     binding.noAddressFound.text = "${result.message}"
+                    binding.noAddressFound.visibility = View.VISIBLE
+                    binding.addressesRclr.visibility = View.GONE
                 }
                 is Result.Loading -> {
                     // Show loading state if needed

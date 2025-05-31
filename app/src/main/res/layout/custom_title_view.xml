@@ -4,14 +4,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/menu_icon"
-            android:layout_width="@dimen/_34sdp"
-            android:layout_height="@dimen/_34sdp"
-            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_4sdp"
             android:contentDescription="@string/app_name"
             android:paddingStart="@dimen/_8sdp"
@@ -27,11 +26,10 @@
             style="@style/mediumTextStyle"
             android:layout_width="@dimen/_250sdp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:text="@string/app_name"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/notification_icon"
             app:layout_constraintStart_toEndOf="@+id/menu_icon"
@@ -39,9 +37,8 @@
 
         <ImageView
             android:id="@+id/notification_icon"
-            android:layout_width="@dimen/_34sdp"
-            android:layout_height="@dimen/_34sdp"
-            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:contentDescription="@string/app_name"
             android:paddingStart="@dimen/_8sdp"
             android:paddingTop="@dimen/_8sdp"

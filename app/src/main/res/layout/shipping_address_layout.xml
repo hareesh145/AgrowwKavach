@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -8,7 +9,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:contentInsetStart="0dp"
@@ -40,18 +41,18 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:padding="@dimen/_5sdp"
+                android:padding="@dimen/_2sdp"
                 android:text="@string/add_new_address"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_13ssp" />
 
             <ImageView
                 android:id="@+id/add_icon"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/add_circle"
-                app:tint="@color/colorPrimary" />
+                app:tint="@color/line_color" />
         </LinearLayout>
 
         <TextView
@@ -78,6 +79,8 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/_10sdp"
             android:padding="@dimen/_5sdp"
+            tools:listitem="@layout/item_shipping_address"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saved_shipping_address" />
 

@@ -34,4 +34,6 @@
     <color name="switch_track_on">#4CAF50</color>  <!-- Green -->
     <color name="switch_track_off">#BDBDBD</color> <!-- Grey -->
 
+    <color name="line_color">#B8000000</color>
+
 </resources>
